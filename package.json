@@ -1,12 +1,10 @@
 {
-  "name": "@swup/progress-plugin",
-  "amdName": "SwupProgressPlugin",
+  "name": "htmx-progress",
   "version": "2.0.0",
   "description": "Swup plugin for displaying a loading indicator",
   "type": "module",
   "main": "./src/index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": {
     "name": "Philipp Daun",
     "email": "daun@daun.ltd",
