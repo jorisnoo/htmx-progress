@@ -1,11 +1,9 @@
-import Plugin from '@swup/plugin';
 import ProgressBar from './ProgressBar';
+import htmx from 'htmx.org';
 
-export default class SwupProgressPlugin extends Plugin {
-	name = 'SwupProgressPlugin';
+class ProgressPlugin {
 
 	constructor(options = {}) {
-		super();
 		const defaultOptions = {
 			className: 'swup-progress-bar',
 			delay: 300,
@@ -29,16 +27,6 @@ export default class SwupProgressPlugin extends Plugin {
 			minValue: this.options.minValue,
 			initialValue: this.options.initialValue
 		});
-	}
-
-	mount() {
-		this.swup.on('transitionStart', this.startShowingProgress);
-		this.swup.on('contentReplaced', this.stopShowingProgress);
-	}
-
-	unmount() {
-		this.swup.off('transitionStart', this.startShowingProgress);
-		this.swup.off('contentReplaced', this.stopShowingProgress);
 	}
 
 	startShowingProgress = () => {
@@ -86,3 +74,17 @@ export default class SwupProgressPlugin extends Plugin {
 		delete this.hideProgressBarTimeout;
 	};
 }
+
+const progress = new ProgressPlugin({});
+
+htmx.defineExtension('progress-bar', {
+	onEvent: function (name, evt) {
+		if (name === "htmx:configRequest") {
+			console.log('start');
+			progress.startShowingProgress();
+		}
+		if (name === "htmx:load") {
+			progress.stopShowingProgress();
+		}
+	}
+});
