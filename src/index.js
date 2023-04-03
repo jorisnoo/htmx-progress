@@ -80,7 +80,6 @@ const progress = new ProgressPlugin({});
 htmx.defineExtension('progress-bar', {
 	onEvent: function (name, evt) {
 		if (name === "htmx:configRequest") {
-			console.log('start');
 			progress.startShowingProgress();
 		}
 		if (name === "htmx:load") {
