@@ -5,12 +5,12 @@ class ProgressPlugin {
 
 	constructor(options = {}) {
 		const defaultOptions = {
-			className: 'swup-progress-bar',
-			delay: 300,
-			transition: undefined,
+			className: 'htmx-progress-bar',
+			delay: 500,
+			transition: 300,
 			minValue: undefined,
-			initialValue: undefined,
-			hideImmediately: true
+			initialValue: 0.25,
+			hideImmediately: true,
 		};
 
 		this.options = {
