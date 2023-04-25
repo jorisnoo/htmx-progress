@@ -6,7 +6,7 @@ class ProgressPlugin {
 	constructor(options = {}) {
 		const defaultOptions = {
 			className: 'htmx-progress-bar',
-			delay: 500,
+			delay: 700,
 			transition: 300,
 			minValue: undefined,
 			initialValue: 0.25,
